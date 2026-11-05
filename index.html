@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f5f0">
+  <meta name="description" content="Обои, фотообои и фрески в Кирове. Подберём покрытие под ваш интерьер и рассчитаем стоимость.">
+  <title>Обои · фотообои · фрески — подбор в Кирове</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f5f0;
+      --white: #fffefa;
+      --ink: #29231e;
+      --muted: #766b61;
+      --brown: #967355;
+      --brown-dark: #71553d;
+      --line: #e8dfd5;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font: 15px/1.6 var(--sans);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    .wrap { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+
+    .topline {
+      color: #eee7df;
+      background: #302921;
+      font-size: 12px;
+      letter-spacing: .03em;
+    }
+    .topline-inner {
+      min-height: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+    }
+    .topline a { color: #fff; transition: color .2s ease; }
+    .topline a:hover { color: #d7b99b; }
+    .topline-note { color: #c9b9a7; }
+
+    .header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(123, 99, 76, .12);
+      background: rgba(248, 245, 240, .94);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 220px; }
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      border: 1px solid var(--brown);
+      object-fit: cover;
+    }
+    .brand-name { font-size: 12px; font-weight: 800; letter-spacing: .11em; }
+    .brand-caption { margin-top: 2px; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
+    .nav { display: flex; align-items: center; gap: 29px; font-size: 13px; font-weight: 600; }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover { color: var(--brown); }
+    .header-contact { text-align: right; white-space: nowrap; }
+    .header-contact a { display: block; font-size: 14px; font-weight: 800; }
+    .header-contact span { color: var(--muted); font-size: 10px; }
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 590px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: #b6a18b url("https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=85") center 48% / cover no-repeat;
+    }
+    .hero::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(35, 29, 24, .45), rgba(35, 29, 24, .12) 50%, rgba(35, 29, 24, .06));
+      content: "";
+    }
+    .hero-panel {
+      width: min(680px, calc(100% - 40px));
+      margin: 46px auto;
+      padding: clamp(32px, 5vw, 58px);
+      border: 1px solid rgba(255,255,255,.7);
+      background: rgba(250, 247, 242, .93);
+      box-shadow: 0 24px 80px rgba(29, 22, 16, .17);
+      text-align: center;
+      animation: rise-in .8s both;
+    }
+    .eyebrow {
+      color: var(--brown-dark);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      max-width: 550px;
+      margin: 14px auto 16px;
+      font: 500 clamp(38px, 5.2vw, 64px)/1.08 var(--serif);
+      letter-spacing: -.035em;
+    }
+    .hero p { max-width: 450px; margin: 0 auto 25px; color: #64584d; font-size: 15px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 23px;
+      border: 1px solid var(--brown);
+      border-radius: 2px;
+      color: #fff;
+      background: var(--brown);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .button:hover { transform: translateY(-3px); background: var(--brown-dark); box-shadow: 0 9px 22px rgba(113, 85, 61, .22); }
+    .button:active { transform: translateY(-1px) scale(.98); }
+    .button-light { color: var(--brown-dark); background: transparent; }
+    .button-light:hover { color: #fff; }
+    .hero-footnote { margin-top: 19px; color: #82766b; font-size: 11px; }
+
+    .trust-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: -1px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+    .trust-item {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .trust-item:last-child { border: 0; }
+    .trust-icon { color: var(--brown); font: 22px var(--serif); }
+
+    .section { padding: 92px 0; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 31px;
+    }
+    .section h2 { margin: 9px 0 0; font: 500 clamp(31px, 4vw, 45px)/1.15 var(--serif); letter-spacing: -.025em; }
+    .section-intro { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 24px; }
+    .filter {
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      color: #63584f;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .filter:hover, .filter[aria-pressed="true"] { border-color: var(--brown); color: #fff; background: var(--brown); }
+    .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px; }
+    .product {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--white);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .product:hover { transform: translateY(-5px); box-shadow: 0 16px 34px rgba(63, 47, 33, .10); }
+    .product[hidden] { display: none; }
+    .product-image { position: relative; overflow: hidden; aspect-ratio: 1 / 1.08; background: #e5ddd3; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+    .product:hover .product-image img { transform: scale(1.055); }
+    .product-label {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      padding: 6px 9px;
+      color: #5f4b39;
+      background: rgba(255, 254, 250, .91);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .product-body { padding: 17px 17px 19px; }
+    .product-type { color: var(--brown); font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .product h3 { min-height: 44px; margin: 7px 0 4px; font: 500 18px/1.25 var(--serif); }
+    .product-note { margin: 0 0 15px; color: var(--muted); font-size: 11px; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .price { font-size: 11px; font-weight: 800; }
+    .product-link { color: var(--brown-dark); font-size: 10px; font-weight: 800; }
+    .product-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .catalog-note { margin: 18px 0 0; color: #84796e; font-size: 10px; }
+
+    .story { padding: 0 0 94px; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 460px; background: #eee7de; }
+    .story-image { min-height: 400px; background: #d4c3b0 url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85") center / cover no-repeat; }
+    .story-copy { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: clamp(30px, 6vw, 75px); }
+    .story-copy h2 { max-width: 450px; margin: 12px 0 16px; font: 500 clamp(32px, 4vw, 48px)/1.15 var(--serif); }
+    .story-copy p { max-width: 430px; margin-bottom: 25px; color: #6f6358; font-size: 13px; }
+    .check-list { display: grid; gap: 12px; margin: 0 0 28px; padding: 0; list-style: none; color: #51483f; font-size: 12px; }
+    .check-list li::before { margin-right: 10px; color: var(--brown); content: "✳"; }
+
+    .contact-section { padding: 0 0 92px; }
+    .contact-card { display: grid; grid-template-columns: 1.1fr .9fr; background: #302921; color: #f9f5ef; }
+    .contact-main { padding: clamp(30px, 5vw, 60px); }
+    .contact-main .eyebrow { color: #d4b99e; }
+    .contact-main h2 { margin: 12px 0 14px; font: 500 clamp(32px, 4vw, 47px)/1.1 var(--serif); }
+    .contact-main p { max-width: 460px; margin-bottom: 25px; color: #c9beb2; font-size: 13px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 11px; }
+    .contact-details { display: grid; align-content: center; gap: 22px; padding: clamp(30px, 5vw, 56px); border-left: 1px solid rgba(255,255,255,.16); }
+    .detail-label { display: block; margin-bottom: 5px; color: #c3ae99; font-size: 9px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .detail-value { font-size: 13px; }
+    .hours { display: grid; grid-template-columns: 1fr auto; gap: 4px 20px; max-width: 260px; color: #e5dcd2; font-size: 11px; }
+    .hours .closed { color: #b4a69a; }
+
+    .footer { padding: 25px 0; border-top: 1px solid var(--line); color: #796e63; font-size: 10px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .footer a { color: var(--brown-dark); }
+    .footer a:hover { text-decoration: underline; }
+    .toast {
+      position: fixed;
+      z-index: 50;
+      right: 20px;
+      bottom: 20px;
+      max-width: min(360px, calc(100% - 40px));
+      padding: 14px 18px;
+      transform: translateY(15px);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 12px 35px rgba(0,0,0,.12);
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s ease;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (max-width: 900px) {
+      .nav { gap: 17px; }
+      .brand { min-width: 0; }
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { min-height: 530px; }
+    }
+    @media (max-width: 680px) {
+      .wrap { width: min(100% - 32px, 540px); }
+      .topline-inner { min-height: 34px; font-size: 10px; }
+      .topline-note { display: none; }
+      .header-inner { min-height: 68px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 10px; }
+      .brand-caption { font-size: 8px; }
+      .header-contact { margin-left: auto; }
+      .header-contact a { font-size: 11px; }
+      .header-contact span { font-size: 9px; }
+      .menu-toggle { display: grid; place-items: center; flex: 0 0 auto; }
+      .nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 16px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--paper);
+      }
+      .nav.open { display: flex; flex-direction: column; }
+      .nav a { padding: 12px 4px; border-bottom: 1px solid var(--line); }
+      .hero { min-height: 510px; }
+      .hero-panel { padding: 31px 23px; }
+      .hero p { font-size: 13px; }
+      .trust-item { min-height: 83px; flex-direction: column; gap: 4px; padding: 11px 5px; text-align: center; font-size: 9px; line-height: 1.35; }
+      .trust-icon { font-size: 19px; }
+      .section { padding: 68px 0; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 12px; margin-bottom: 22px; }
+      .section-intro { font-size: 12px; }
+      .products { gap: 10px; }
+      .product-body { padding: 12px; }
+      .product h3 { min-height: 42px; font-size: 16px; }
+      .product-note { font-size: 10px; }
+      .product-bottom { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .story { padding-bottom: 68px; }
+      .story-grid, .contact-card { grid-template-columns: 1fr; }
+      .story-image { min-height: 280px; }
+      .story-copy { padding: 32px 25px 36px; }
+      .contact-section { padding-bottom: 68px; }
+      .contact-details { border-top: 1px solid rgba(255,255,255,.16); border-left: 0; }
+      .footer-inner { flex-direction: column; gap: 8px; }
+    }
+    @media (max-width: 380px) {
+      .header-contact { display: none; }
+      .products { grid-template-columns: 1fr; }
+      .product-image { aspect-ratio: 1.3 / 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topline">
+    <div class="wrap topline-inner">
+      <span>Киров · Преображенская, 84/1, офис 16</span>
+      <span class="topline-note">Подберём покрытие под ваш интерьер</span>
+      <a href="tel:+79128260629">+7 (912) 826-06-29</a>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#" aria-label="Обои, фотообои и фрески — на главную">
+        <img class="brand-mark" src="assets/brand-avatar.jpg" alt="">
+        <span>
+          <span class="brand-name">MR. &amp; MRS. MIT</span>
+          <span class="brand-caption">ОБОИ · ФОТООБОИ · ФРЕСКИ</span>
+        </span>
+      </a>
+      <nav class="nav" id="main-nav" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#about">Подбор интерьера</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div class="header-contact">
+        <a href="tel:+79128260629">+7 (912) 826-06-29</a>
+        <span>Звоните, поможем с выбором</span>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-panel">
+        <div class="eyebrow">Ваш интерьер начинается со стен</div>
+        <h1>Обои, фотообои и фрески</h1>
+        <p>Поможем найти фактуру, цвет и рисунок, которые будут по-настоящему вашими.</p>
+        <a class="button" href="#catalog">Смотреть подборку <span aria-hidden="true">↗</span></a>
+        <div class="hero-footnote">Более 7&nbsp;000 вариантов · подбор по фото комнаты</div>
+      </div>
+    </section>
+
+    <div class="wrap trust-row" aria-label="Наши преимущества">
+      <div class="trust-item"><span class="trust-icon" aria-hidden="true">✳</span><span>Большой выбор фактур<br>и оттенков</span></div>
+      <div class="trust-item"><span class="trust-icon" aria-hidden="true">⌂</span><span>Фотообои и фрески<br>по вашим размерам</span></div>
+      <div class="trust-item"><span class="trust-icon" aria-hidden="true">♡</span><span>Помощь с подбором<br>для вашего интерьера</span></div>
+    </div>
+
+    <section class="section" id="catalog">
+      <div class="wrap">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">Идеи для вашего дома</div>
+            <h2>Подборка коллекций</h2>
+          </div>
+          <p class="section-intro">Несколько направлений, с которых можно начать выбор. Покажите нам комнату — поможем подобрать вариант под ваши стены.</p>
+        </div>
+        <div class="filters reveal" role="group" aria-label="Фильтр по типу товара">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">Все варианты</button>
+          <button class="filter" type="button" data-filter="wallpaper" aria-pressed="false">Обои</button>
+          <button class="filter" type="button" data-filter="photo" aria-pressed="false">Фотообои</button>
+          <button class="filter" type="button" data-filter="fresco" aria-pressed="false">Фрески</button>
+        </div>
+        <div class="products">
+          <article class="product reveal" data-category="wallpaper">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=700&q=80" alt="Спокойный интерьер в тёплых нейтральных оттенках" loading="lazy">
+              <span class="product-label">Обои</span>
+            </div>
+            <div class="product-body">
+              <div class="product-type">Спокойная классика</div>
+              <h3>Тёплый натуральный оттенок</h3>
+              <p class="product-note">Нейтральная основа для уютного интерьера</p>
+              <div class="product-bottom"><span class="price">Стоимость уточняйте</span><a class="product-link" href="#contacts">Узнать цену ↗</a></div>
+            </div>
+          </article>
+          <article class="product reveal" data-category="wallpaper">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=700&q=80" alt="Современная гостиная с выразительными фактурами" loading="lazy">
+              <span class="product-label">Обои</span>
+            </div>
+            <div class="product-body">
+              <div class="product-type">Фактурный акцент</div>
+              <h3>Глубина и мягкий рельеф</h3>
+              <p class="product-note">Фактура, которая красиво работает со светом</p>
+              <div class="product-bottom"><span class="price">Стоимость уточняйте</span><a class="product-link" href="#contacts">Узнать цену ↗</a></div>
+            </div>
+          </article>
+          <article class="product reveal" data-category="photo">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=700&q=80" alt="Светлая комната с природными мотивами" loading="lazy">
+              <span class="product-label">Фотообои</span>
+            </div>
+            <div class="product-body">
+              <div class="product-type">Природный мотив</div>
+              <h3>Пейзаж в вашем масштабе</h3>
+              <p class="product-note">Изображение и размер подберём под стену</p>
+              <div class="product-bottom"><span class="price">Стоимость уточняйте</span><a class="product-link" href="#contacts">Узнать цену ↗</a></div>
+            </div>
+          </article>
+          <article class="product reveal" data-category="fresco">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=700&q=80" alt="Элегантная гостиная с декоративной стеной" loading="lazy">
+              <span class="product-label">Фреска</span>
+            </div>
+            <div class="product-body">
+              <div class="product-type">Декоративная стена</div>
+              <h3>Выразительная деталь интерьера</h3>
+              <p class="product-note">Подскажем, как сочетать рисунок и отделку</p>
+              <div class="product-bottom"><span class="price">Стоимость уточняйте</span><a class="product-link" href="#contacts">Узнать цену ↗</a></div>
+            </div>
+          </article>
+        </div>
+        <p class="catalog-note">Изображения в этой подборке — примеры интерьеров, не фотографии конкретных товаров. Чтобы добавить точные товары и цены из каталога VK, нужны данные карточек.</p>
+      </div>
+    </section>
+
+    <section class="story" id="about">
+      <div class="wrap story-grid reveal">
+        <div class="story-image" role="img" aria-label="Уютная современная гостиная"></div>
+        <div class="story-copy">
+          <div class="eyebrow">Не нужно выбирать в одиночку</div>
+          <h2>Подберём обои под ваш интерьер</h2>
+          <p>Пришлите фото комнаты и расскажите, какое настроение хотите создать. Поможем сориентироваться в цветах, рисунках и материалах.</p>
+          <ul class="check-list">
+            <li>Фотообои и фрески по вашим размерам</li>
+            <li>Идеи под цвет мебели и освещение</li>
+            <li>Можно начать с короткого звонка</li>
+          </ul>
+          <a class="button" href="tel:+79128260629">Позвонить для подбора <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacts">
+      <div class="wrap contact-card reveal">
+        <div class="contact-main">
+          <div class="eyebrow">Будем рады помочь</div>
+          <h2>Найдём ваши обои</h2>
+          <p>Заходите в магазин или свяжитесь с нами — подскажем по ассортименту и поможем с выбором.</p>
+          <div class="contact-links">
+            <a class="button" href="tel:+79128260629">Позвонить</a>
+            <a class="button button-light" href="https://vk.ru/market-211194143" target="_blank" rel="noopener noreferrer">Каталог ВКонтакте ↗</a>
+          </div>
+        </div>
+        <div class="contact-details">
+          <div>
+            <span class="detail-label">Адрес</span>
+            <a class="detail-value" href="https://yandex.ru/maps/?text=Киров%2C%20Преображенская%2084%2F1%2C%20офис%2016" target="_blank" rel="noopener noreferrer">Преображенская, 84/1, офис 16 ↗</a>
+          </div>
+          <div>
+            <span class="detail-label">Телефон</span>
+            <a class="detail-value" href="tel:+79128260629">+7 (912) 826-06-29</a>
+          </div>
+          <div>
+            <span class="detail-label">Часы работы</span>
+            <div class="hours">
+              <span>Пн — Пт</span><span>10:00 — 18:00</span>
+              <span>Суббота</span><span>11:00 — 17:00</span>
+              <span>Воскресенье</span><span class="closed">Выходной</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© <span id="year"></span> Обои · фотообои · фрески</span>
+      <a href="https://vk.ru/market-211194143" target="_blank" rel="noopener noreferrer">Магазин ВКонтакте ↗</a>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const filterButtons = document.querySelectorAll(".filter");
+    const products = document.querySelectorAll(".product");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.dataset.filter;
+        filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        products.forEach((product) => {
+          product.hidden = category !== "all" && product.dataset.category !== category;
+        });
+      });
+    });
+
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".nav");
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Открыть меню" : "Закрыть меню");
+      navigation.classList.toggle("open", !isOpen);
+    });
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Открыть меню");
+      });
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => revealObserver.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("visible"));
+    }
+
+    const toast = document.querySelector("#toast");
+    let toastTimer;
+    document.querySelectorAll(".product-link").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        toast.textContent = "Позвоните нам — уточним наличие и актуальную цену.";
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 3200);
+      });
+    });
+  </script>
+</body>
+</html>
