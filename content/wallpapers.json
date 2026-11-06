@@ -119,18 +119,6 @@
       "images": [
         "/assets/wallpaper-12.png"
       ]
-    },
-    {
-      "title": "112",
-      "model": "12345",
-      "design": "f",
-      "price": 1111,
-      "stock": 7,
-      "images": [
-        "/assets/uploads/5301199862425056764.jpg",
-        "/assets/uploads/photo_2026-10-02_12-39-17.jpg",
-        "/assets/uploads/3ezvgjiqygir5h2jgds1wupbbvmm1gvs6_wwujttzxlqmxtfhb3ezuwcrntvkhseaxrejyf9xmurw7jocgsx4r_e_11zon.jpg"
-      ]
     }
   ]
 }
