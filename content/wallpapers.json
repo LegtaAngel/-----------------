@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "title": "Светлый графичный рисунок",
+      "model": "Peterhof Palazzo A.Grifoni",
+      "design": "Дизайн 01",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-01.png"
+    },
+    {
+      "title": "Архитектурный орнамент",
+      "model": "Peterhof Palazzo A.Grifoni",
+      "design": "Дизайн 02",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-02.png"
+    },
+    {
+      "title": "Нежный классический орнамент",
+      "model": "Peterhof Palazzo A.Grifoni",
+      "design": "Дизайн 03",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-03.png"
+    },
+    {
+      "title": "Геометрия в серых тонах",
+      "model": "Peterhof Palazzo A.Grifoni",
+      "design": "Дизайн 04",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-04.png"
+    },
+    {
+      "title": "Контрастный волнистый узор",
+      "model": "Peterhof Palazzo A.Grifoni",
+      "design": "Дизайн 05",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-05.png"
+    },
+    {
+      "title": "Растительный мотив в зелёных тонах",
+      "model": "Peterhof Palazzo A.Grifoni",
+      "design": "Дизайн 06",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-06.png"
+    },
+    {
+      "title": "Мягкий бежевый орнамент",
+      "model": "Ducale Palazzo A.Grifoni",
+      "design": "Дизайн 07",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-07.png"
+    },
+    {
+      "title": "Геометрический рисунок в голубых оттенках",
+      "model": "Ducale Palazzo A.Grifoni",
+      "design": "Дизайн 08",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-08.png"
+    },
+    {
+      "title": "Абстрактный геометрический мотив",
+      "model": "Ducale Palazzo A.Grifoni",
+      "design": "Дизайн 09",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-09.png"
+    },
+    {
+      "title": "Золотистый ботанический рисунок",
+      "model": "Ducale Palazzo A.Grifoni",
+      "design": "Дизайн 10",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-10.png"
+    },
+    {
+      "title": "Тёмная фактура с характером",
+      "model": "Ducale Palazzo A.Grifoni",
+      "design": "Дизайн 11",
+      "price": 5600,
+      "stock": null,
+      "image": "/assets/wallpaper-11.png"
+    },
+    {
+      "title": "Светлый цветочный узор",
+      "model": "Berti A. Allori",
+      "design": "Дизайн 12",
+      "price": 4800,
+      "stock": null,
+      "image": "/assets/wallpaper-12.png"
+    }
+  ]
+}

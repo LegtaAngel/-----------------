@@ -235,6 +235,8 @@
     .product-note { margin: 0 0 15px; color: var(--muted); font-size: 11px; }
     .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
     .price { font-size: 11px; font-weight: 800; }
+    .stock-badge { display: inline-flex; align-items: center; width: fit-content; margin: 0 0 14px; padding: 5px 9px; border-radius: 99px; color: #536347; background: #edf2e8; font-size: 10px; font-weight: 700; }
+    .stock-badge.out-of-stock { color: #805c50; background: #f5ebe6; }
     .product-link { color: var(--brown-dark); font-size: 10px; font-weight: 800; }
     .product-link:hover { text-decoration: underline; text-underline-offset: 3px; }
     .catalog-note { margin: 18px 0 0; color: #84796e; font-size: 10px; }
@@ -408,13 +410,13 @@
           </div>
           <p class="section-intro">Несколько направлений, с которых можно начать выбор. Покажите нам комнату — поможем подобрать вариант под ваши стены.</p>
         </div>
-        <div class="filters reveal" role="group" aria-label="Фильтр по коллекции">
+        <div class="filters reveal" id="product-filters" role="group" aria-label="Фильтр по коллекции">
           <button class="filter" type="button" data-filter="all" aria-pressed="true">Все варианты</button>
           <button class="filter" type="button" data-filter="peterhof" aria-pressed="false">Peterhof Palazzo A.Grifoni</button>
           <button class="filter" type="button" data-filter="ducale" aria-pressed="false">Ducale Palazzo A.Grifoni</button>
           <button class="filter" type="button" data-filter="berti" aria-pressed="false">Berti A. Allori</button>
         </div>
-        <div class="products">
+        <div class="products" id="products-grid" aria-live="polite">
           <article class="product reveal" data-category="peterhof">
             <div class="product-image">
               <img src="assets/wallpaper-01.png" alt="Обои Peterhof Palazzo в интерьере столовой" loading="lazy">
@@ -560,7 +562,7 @@
             </div>
           </article>
         </div>
-        <p class="catalog-note">Цены перенесены со скриншота каталога. В нём названия части артикулов обрезаны, поэтому точный рисунок и наличие уточняйте по телефону.</p>
+        <p class="catalog-note" id="catalog-status" role="status">Загружаем каталог…</p>
       </div>
     </section>
 
@@ -623,19 +625,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const filterButtons = document.querySelectorAll(".filter");
-    const products = document.querySelectorAll(".product");
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const category = button.dataset.filter;
-        filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-        products.forEach((product) => {
-          product.hidden = category !== "all" && product.dataset.category !== category;
-        });
-      });
-    });
-
     const menuButton = document.querySelector(".menu-toggle");
     const navigation = document.querySelector(".nav");
     menuButton.addEventListener("click", () => {
@@ -668,6 +657,128 @@
     } else {
       revealItems.forEach((item) => item.classList.add("visible"));
     }
+
+    const productsGrid = document.querySelector("#products-grid");
+    const productFilters = document.querySelector("#product-filters");
+    const catalogStatus = document.querySelector("#catalog-status");
+    const currencyFormat = new Intl.NumberFormat("ru-RU");
+    productsGrid.replaceChildren();
+    productFilters.replaceChildren();
+
+    function applyProductFilter(selectedModel) {
+      productFilters.querySelectorAll(".filter").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === selectedModel));
+      });
+      productsGrid.querySelectorAll(".product").forEach((product) => {
+        product.hidden = selectedModel !== "all" && product.dataset.model !== selectedModel;
+      });
+    }
+
+    function createProduct(product) {
+      const card = document.createElement("article");
+      card.className = "product reveal visible";
+      card.dataset.model = product.model;
+
+      const imageFrame = document.createElement("div");
+      imageFrame.className = "product-image";
+      const image = document.createElement("img");
+      image.src = product.image;
+      image.alt = `${product.model}: ${product.title}`;
+      image.loading = "lazy";
+      const label = document.createElement("span");
+      label.className = "product-label";
+      label.textContent = "Обои";
+      imageFrame.append(image, label);
+
+      const body = document.createElement("div");
+      body.className = "product-body";
+      const model = document.createElement("div");
+      model.className = "product-type";
+      model.textContent = product.model;
+      const title = document.createElement("h3");
+      title.textContent = product.title;
+      const design = document.createElement("p");
+      design.className = "product-note";
+      design.textContent = product.design;
+
+      const stock = document.createElement("span");
+      stock.className = "stock-badge";
+      if (Number.isInteger(product.stock) && product.stock >= 0) {
+        stock.textContent = `В наличии: ${product.stock} шт`;
+        if (product.stock === 0) stock.classList.add("out-of-stock");
+      } else {
+        stock.textContent = "Наличие уточняйте";
+      }
+
+      const footer = document.createElement("div");
+      footer.className = "product-bottom";
+      const price = document.createElement("span");
+      price.className = "price";
+      price.textContent = `${currencyFormat.format(product.price)} ₽`;
+      const contact = document.createElement("a");
+      contact.className = "product-link";
+      contact.href = "tel:+79128260629";
+      contact.textContent = "Уточнить наличие ↗";
+      footer.append(price, contact);
+      body.append(model, title, design, stock, footer);
+      card.append(imageFrame, body);
+      return card;
+    }
+
+    async function loadCatalog() {
+      try {
+        const response = await fetch("/content/wallpapers.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`Не удалось загрузить каталог (${response.status}).`);
+        const catalog = await response.json();
+        if (!Array.isArray(catalog.products)) throw new Error("Файл каталога имеет неверный формат.");
+
+        const products = catalog.products.filter((product) =>
+          product &&
+          typeof product.title === "string" &&
+          typeof product.model === "string" &&
+          typeof product.design === "string" &&
+          Number.isFinite(product.price) &&
+          typeof product.image === "string"
+        );
+        if (products.length !== catalog.products.length) {
+          throw new Error("В каталоге есть товары с незаполненными или неверными полями.");
+        }
+
+        productsGrid.replaceChildren(...products.map(createProduct));
+        productFilters.replaceChildren();
+
+        const allButton = document.createElement("button");
+        allButton.type = "button";
+        allButton.className = "filter";
+        allButton.dataset.filter = "all";
+        allButton.setAttribute("aria-pressed", "true");
+        allButton.textContent = "Все варианты";
+        productFilters.append(allButton);
+
+        [...new Set(products.map((product) => product.model))].forEach((model) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "filter";
+          button.dataset.filter = model;
+          button.setAttribute("aria-pressed", "false");
+          button.textContent = model;
+          productFilters.append(button);
+        });
+
+        productFilters.addEventListener("click", (event) => {
+          const button = event.target.closest(".filter");
+          if (button) applyProductFilter(button.dataset.filter);
+        });
+
+        catalogStatus.textContent = "Цены указаны в рублях. Количество на складе можно обновить в админке.";
+      } catch (error) {
+        console.error("Catalog loading failed:", error);
+        catalogStatus.textContent = "Не удалось загрузить каталог. Попробуйте обновить страницу позже.";
+        catalogStatus.setAttribute("role", "alert");
+      }
+    }
+
+    loadCatalog();
 
   </script>
 </body>
