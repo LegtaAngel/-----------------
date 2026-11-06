@@ -119,16 +119,6 @@
       "images": [
         "/assets/wallpaper-12.png"
       ]
-    },
-    {
-      "title": "123",
-      "model": "123",
-      "design": "2",
-      "price": 5444,
-      "stock": 3,
-      "images": [
-        null
-      ]
     }
   ]
 }
