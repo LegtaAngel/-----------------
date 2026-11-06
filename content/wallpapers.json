@@ -95,14 +95,6 @@
       "price": 4800,
       "stock": null,
       "image": "/assets/wallpaper-12.png"
-    },
-    {
-      "title": "РОБЛОКС",
-      "model": "КРАСИВЫЙ",
-      "design": "123",
-      "price": 9999,
-      "stock": 2,
-      "image": "/assets/uploads/пугна.jpg"
     }
   ]
 }
