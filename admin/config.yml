@@ -2,8 +2,6 @@ backend:
   name: github
   repo: LegtaAngel/-----------------
   branch: main
-  base_url: https://mrmissmit.vercel.app
-  auth_endpoint: api/auth
 
 media_folder: assets/uploads
 public_folder: /assets/uploads
