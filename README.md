@@ -8,10 +8,13 @@
 
 ## Настройка Decap CMS
 
-1. В `admin/config.yml` замените `YOUR_GITHUB_USERNAME/YOUR_REPOSITORY` на владельца и имя GitHub-репозитория, где опубликован сайт.
-2. Настройте GitHub OAuth для backend Decap CMS (или подключите Decap Turbo) и разрешите продавцу запись в репозиторий. Сам Decap CMS бесплатный, но для GitHub backend требуется OAuth-аутентификация.
-3. Опубликуйте файлы проекта в GitHub и разверните репозиторий на Vercel.
-4. Откройте `https://ваш-домен/admin/`, войдите и редактируйте товары. CMS сохранит изменения в GitHub, после чего Vercel опубликует обновлённый каталог.
+1. В `admin/config.yml` укажите настоящий GitHub-репозиторий вместо `LegtaAngel/-----------------`.
+2. В настройках GitHub OAuth App установите Authorization callback URL: `https://mrmissmit.vercel.app/api/callback`.
+3. В Vercel задайте переменные окружения `OAUTH_CLIENT_ID` и `OAUTH_CLIENT_SECRET` из GitHub OAuth App, затем заново разверните сайт.
+4. Опубликуйте файлы проекта в GitHub и разверните репозиторий на Vercel.
+5. Откройте `https://mrmissmit.vercel.app/admin/`, войдите и редактируйте товары. CMS сохранит изменения в GitHub, после чего Vercel опубликует обновлённый каталог.
+
+Функции `api/auth.js` и `api/callback.js` выполняют OAuth-переход и обмен кода на токен на сервере; секрет приложения не отправляется в браузер. Состояние OAuth защищено одноразовым `state` в HttpOnly cookie.
 
 Загруженные через CMS картинки сохраняются в `assets/uploads/`.
 
