@@ -6,7 +6,9 @@
       "design": "Дизайн 01",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-01.png"]
+      "images": [
+        "/assets/wallpaper-01.png"
+      ]
     },
     {
       "title": "Архитектурный орнамент",
@@ -14,7 +16,9 @@
       "design": "Дизайн 02",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-02.png"]
+      "images": [
+        "/assets/wallpaper-02.png"
+      ]
     },
     {
       "title": "Нежный классический орнамент",
@@ -22,7 +26,9 @@
       "design": "Дизайн 03",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-03.png"]
+      "images": [
+        "/assets/wallpaper-03.png"
+      ]
     },
     {
       "title": "Геометрия в серых тонах",
@@ -30,7 +36,9 @@
       "design": "Дизайн 04",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-04.png"]
+      "images": [
+        "/assets/wallpaper-04.png"
+      ]
     },
     {
       "title": "Контрастный волнистый узор",
@@ -38,7 +46,9 @@
       "design": "Дизайн 05",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-05.png"]
+      "images": [
+        "/assets/wallpaper-05.png"
+      ]
     },
     {
       "title": "Растительный мотив в зелёных тонах",
@@ -46,7 +56,9 @@
       "design": "Дизайн 06",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-06.png"]
+      "images": [
+        "/assets/wallpaper-06.png"
+      ]
     },
     {
       "title": "Мягкий бежевый орнамент",
@@ -54,7 +66,9 @@
       "design": "Дизайн 07",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-07.png"]
+      "images": [
+        "/assets/wallpaper-07.png"
+      ]
     },
     {
       "title": "Геометрический рисунок в голубых оттенках",
@@ -62,7 +76,9 @@
       "design": "Дизайн 08",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-08.png"]
+      "images": [
+        "/assets/wallpaper-08.png"
+      ]
     },
     {
       "title": "Абстрактный геометрический мотив",
@@ -70,7 +86,9 @@
       "design": "Дизайн 09",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-09.png"]
+      "images": [
+        "/assets/wallpaper-09.png"
+      ]
     },
     {
       "title": "Золотистый ботанический рисунок",
@@ -78,7 +96,9 @@
       "design": "Дизайн 10",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-10.png"]
+      "images": [
+        "/assets/wallpaper-10.png"
+      ]
     },
     {
       "title": "Тёмная фактура с характером",
@@ -86,7 +106,9 @@
       "design": "Дизайн 11",
       "price": 5600,
       "stock": null,
-      "images": ["/assets/wallpaper-11.png"]
+      "images": [
+        "/assets/wallpaper-11.png"
+      ]
     },
     {
       "title": "Светлый цветочный узор",
@@ -94,7 +116,19 @@
       "design": "Дизайн 12",
       "price": 4800,
       "stock": null,
-      "images": ["/assets/wallpaper-12.png"]
+      "images": [
+        "/assets/wallpaper-12.png"
+      ]
+    },
+    {
+      "title": "123",
+      "model": "123",
+      "design": "2",
+      "price": 5444,
+      "stock": 3,
+      "images": [
+        null
+      ]
     }
   ]
 }
