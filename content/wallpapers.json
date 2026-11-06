@@ -95,6 +95,14 @@
       "price": 4800,
       "stock": null,
       "image": "/assets/wallpaper-12.png"
+    },
+    {
+      "title": "роблокс",
+      "stock": 9999,
+      "price": 100000,
+      "model": "1",
+      "design": "1",
+      "image": "/assets/uploads/долг.png"
     }
   ]
 }
