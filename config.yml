@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: LegtaAngel/-----------------
+  branch: main
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: wallpapers
+    label: Товары
+    files:
+      - name: catalog
+        label: Каталог товаров
+        file: content/wallpapers.json
+        format: json
+        fields:
+          - label: Товары
+            name: products
+            widget: list
+            label_singular: Товар
+            summary: "{{fields.model}} — {{fields.title}}"
+            fields:
+              - label: Название товара
+                name: title
+                widget: string
+              - label: Модель/Коллекция обоев
+                name: model
+                widget: string
+              - label: Номер дизайна
+                name: design
+                widget: string
+              - label: Цена в рублях
+                name: price
+                widget: number
+                value_type: int
+                min: 0
+              - label: Сколько в наличии
+                name: stock
+                widget: number
+                value_type: int
+                min: 0
+                required: false
+              - label: Картинка
+                name: image
+                widget: image
