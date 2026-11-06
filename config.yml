@@ -21,23 +21,40 @@ collections:
             name: products
             widget: list
             label_singular: Товар
+            summary: "{{fields.model}} — {{fields.title}}"
             fields:
               - label: Название товара
                 name: title
                 widget: string
+                required: false
               - label: Модель/Коллекция обоев
                 name: model
                 widget: string
+                required: false
               - label: Номер дизайна
                 name: design
                 widget: string
+                required: false
               - label: Цена в рублях
                 name: price
                 widget: number
+                value_type: int
+                min: 0
+                required: false
               - label: Сколько в наличии
                 name: stock
                 widget: number
+                value_type: int
+                min: 0
                 required: false
-              - label: Картинка
-                name: image
-                widget: image
+              - label: Фотографии товара
+                name: images
+                widget: list
+                required: false
+                min: 0
+                label_singular: Фото
+                field:
+                  label: Фотография
+                  name: image
+                  widget: image
+                  required: false

@@ -51,6 +51,7 @@ collections:
                 name: images
                 widget: list
                 required: false
+                min: 0
                 label_singular: Фото
                 field:
                   label: Фотография
