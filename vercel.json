@@ -1,5 +1,22 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "routes": [
+    {
+      "src": "/admin/config.yml",
+      "dest": "/admin/config.yml",
+      "headers": {
+        "Content-Type": "text/yaml",
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 }
